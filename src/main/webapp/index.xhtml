@@ -15,11 +15,8 @@
 		<h:inputText value="#{practicaExamenBean.nombre}"></h:inputText>
 		<br/>
 		
-		Nombre del Equipo
-		<h:inputText value="#{practicaExamenBean.equipoNombre}"></h:inputText>
-		<br/>
-		
 		<h:commandButton value="Crear Jugador" action="#{practicaExamenBean.crearJugador()}"></h:commandButton>
+		<br/>
 		<br/>
 		
 		Nombre del Equipo
@@ -31,6 +28,10 @@
 		<br/>
 		
 		<h:commandButton value="Crear Equipo" action="#{practicaExamenBean.crearEquipo()}"></h:commandButton>
+		<br/>
+		<br/>
+		
+		<h:commandButton value="MostrarJugadores" action="#{practicaExamenBean.irMostrarTodosLosJugadores()}"></h:commandButton>
 	</h:form>
 </h:body>
 </html>

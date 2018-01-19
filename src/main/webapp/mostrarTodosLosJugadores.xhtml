@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+ 
+<h:head>
+	<title>GAE + JSF</title>
+</h:head>
+<h:body>
+	<h1>Guia para Examen</h1>
+	
+	
+	
+	<h:form>
+		<h:dataTable value = "#{practicaExamenBean.mostrarTodosLosJugadores()}" var = "player">
+   
+   			<h:column>    				
+      			<f:facet name = "nombre">Nombre</f:facet>    				
+      			#{player.nombre}
+   			</h:column>
+   
+   			<h:column>
+     			<f:facet name = "header">Equipo</f:facet>
+      			#{player.nombreEquipo}
+   			</h:column>
+   			
+   			<h:column>
+     			<h:commandButton value="Editar" action="#{practicaExamenBean.irEditarNombreJugador(player)}"></h:commandButton>
+   			</h:column>
+   			<h:column>
+     			<h:commandButton value="Eliminar" action="#{practicaExamenBean.eliminarJugador(player)}"></h:commandButton>
+   			</h:column>
+		</h:dataTable>
+
+		<h:commandButton value="Volver" action="#{practicaExamenBean.irPortada()}"></h:commandButton>
+	</h:form>
+</h:body>
+</html>

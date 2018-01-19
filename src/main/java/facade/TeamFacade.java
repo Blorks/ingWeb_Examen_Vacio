@@ -62,11 +62,32 @@ public class TeamFacade implements Serializable{
 		datastore = DatastoreServiceFactory.getDatastoreService(); // Authorized Datastore service
 		entidad = new Entity("Team");
 
-		entidad.setProperty("nombre", tm.getNombre());
+		entidad.setProperty("nombre", tm.getNombre().toLowerCase());
 		entidad.setProperty("listaJugadores", tm.getListaJugadores());
 		
 		conexion = datastore.beginTransaction();
 		
+		datastore.put(conexion, entidad);
+		conexion.commit();
+	}
+	
+	public void editarTeam(String nombre, Team tmTemp) {
+		datastore = DatastoreServiceFactory.getDatastoreService(); // Authorized Datastore service
+		entidad = new Entity("Team");
+		
+		conexion = datastore.beginTransaction();
+		
+		Query q = new Query("Team").addSort("nombre", Query.SortDirection.ASCENDING);
+		FilterPredicate filtro = new FilterPredicate("nombre", FilterOperator.EQUAL, nombre);
+		q.setFilter(filtro);
+		
+		List<Entity> listaEntidades = datastore.prepare(q).asList(FetchOptions.Builder.withLimit(1));
+		
+		entidad = listaEntidades.get(0);
+		
+		entidad.setProperty("nombre", tmTemp.getNombre());
+		entidad.setProperty("listaJugadores", tmTemp.getListaJugadores());
+
 		datastore.put(conexion, entidad);
 		conexion.commit();
 	}
@@ -81,9 +102,12 @@ public class TeamFacade implements Serializable{
 		FilterPredicate filtro = new FilterPredicate("nombre", FilterOperator.EQUAL, nombre);
 		q.setFilter(filtro);
 
-		List<Entity> listaEntidades = datastore.prepare(q).asList(FetchOptions.Builder.withLimit(20)); ;
+		List<Entity> listaEntidades = datastore.prepare(q).asList(FetchOptions.Builder.withLimit(20));
 		lista = crearEntidades(listaEntidades);
 		
+		conexion.commit();
+		
 		return lista;
+		
 	}
 }
