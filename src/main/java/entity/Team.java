@@ -7,25 +7,20 @@ public class Team implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 	
-	private Integer id;
 	private String nombre;
-	private List<Player> listaJugadores;
-	public Integer getId() {
-		return id;
-	}
-	public void setId(Integer id) {
-		this.id = id;
-	}
+	private List<String> listaJugadores;
+
+	
 	public String getNombre() {
 		return nombre;
 	}
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-	public List<Player> getListaJugadores() {
+	public List<String> getListaJugadores() {
 		return listaJugadores;
 	}
-	public void setListaJugadores(List<Player> listaJugadores) {
+	public void setListaJugadores(List<String> listaJugadores) {
 		this.listaJugadores = listaJugadores;
 	}
 	

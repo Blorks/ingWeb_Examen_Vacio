@@ -9,10 +9,28 @@
 	<title>GAE + JSF</title>
 </h:head>
 <h:body>
-	<h1>Google App Engine + JSF 2.2 example - index.xhtml</h1>
+	<h1>Guia para Examen</h1>
 	<h:form>
-		<h:inputText value="#{helloBean.name}"></h:inputText>
-		<h:commandButton value="Welcome Me" action="welcome"></h:commandButton>
+		Nombre del Jugador
+		<h:inputText value="#{practicaExamenBean.nombre}"></h:inputText>
+		<br/>
+		
+		Nombre del Equipo
+		<h:inputText value="#{practicaExamenBean.equipoNombre}"></h:inputText>
+		<br/>
+		
+		<h:commandButton value="Crear Jugador" action="#{practicaExamenBean.crearJugador()}"></h:commandButton>
+		<br/>
+		
+		Nombre del Equipo
+		<h:inputText value="#{practicaExamenBean.nombreEquipo}"></h:inputText>
+		<br/>
+		
+		Lista de Nombres de los Jugadores del Equipo
+		<h:inputText value="#{practicaExamenBean.listaJugadores}"></h:inputText>
+		<br/>
+		
+		<h:commandButton value="Crear Equipo" action="#{practicaExamenBean.crearEquipo()}"></h:commandButton>
 	</h:form>
 </h:body>
 </html>
